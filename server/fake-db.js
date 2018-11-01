@@ -19,8 +19,8 @@ class FakeDb {
             {
                 //id:'3',
                 title: 'Modern apartment in center',
-                city: 'Bratislava',
-                street: 'Hlavna',
+                city: 'New York',
+                street: 'Time Square',
                 category: 'house',
                 image: 'https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/5/image.jpeg',
                 bedrooms: 1,
