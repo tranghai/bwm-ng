@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'bwm-register',
@@ -8,16 +9,20 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  formData: any = {username: 'Louis'};
+  formData: any = {};
   errors: any[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
   register() {
-    console.log(this.formData);
+    this.auth.register(this.formData).subscribe(()=>{
+      this.router.navigate(['/login', { registered: 'success'}]);
+    }, (errorResponse) =>{
+      this.errors = errorResponse.error.errors;
+    });
   }
 
 }
