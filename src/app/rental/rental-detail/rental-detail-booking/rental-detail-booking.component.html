@@ -30,3 +30,30 @@
     More than 500 people checked this rental in last month.
   </p>
 </div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Booking <p>{{newBooking.startAt}} to {{newBooking.endAt}}</p></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <em>{{newBooking.days}}</em> nights /
+    <em>{{rental.dailyRate}}</em> per Night
+    <p>Guests: <em>{{newBooking.guests}}</em></p>
+    <p>Price: <em>{{newBooking.totalPrice}}$</em></p>
+
+    <p>Do you confirm booking for selected days?</p>
+  </div>
+  <div *ngIf="errors.length > 0" class="alert alert-danger modal-error">
+    <p *ngFor="let error of errors">
+      {{error.detail}}
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-bwm" (click)="createBooking()">Confirm</button>
+    <button type="button" class="btn btn-bwm" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
