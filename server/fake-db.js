@@ -48,6 +48,11 @@ class FakeDb {
                 username: 'Test User',
                 email: 'test@gmail.com',
                 password: 'testtest'
+            },
+            {
+                username: 'Test User1',
+                email: 'test1@gmail.com',
+                password: '123456'
             }
         ]
     }
