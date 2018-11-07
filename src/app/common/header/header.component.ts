@@ -19,7 +19,7 @@ export class HeaderComponent{
         this.router.navigate(['/login']);
     }
 
-    search(value){
-        
+    search(city: string){
+        city ? this.router.navigate([`/rentals/${city}/homes`]) : this.router.navigate(['/rentals']);
     }
 }
