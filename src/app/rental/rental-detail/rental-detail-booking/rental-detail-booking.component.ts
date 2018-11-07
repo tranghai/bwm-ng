@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
-import { ToastrService } from 'ngx-toastr';
+import { ToastsManager } from 'ng2-toastr';
 import { AuthService } from '../../../auth/shared/auth.service';
 import { Booking } from '../../../booking/shared/booking.model';
 import { BookingService } from '../../../booking/shared/booking.service';
@@ -32,14 +32,18 @@ export class RentalDetailBookingComponent implements OnInit {
     alwaysShowCalendars: false,
     opens: 'left',
     autoUpdateInput: false,
-    isInvalidDate: this.checkForInvalidDates(this)
+    isInvalidDate: this.checkForInvalidDates.bind(this)
   };
 
   constructor(public auth: AuthService, 
               private helper : HelperService,
               private bookingService: BookingService,
-              private modalService: NgbModal,
-              private toastr: ToastrService) { }
+              private modalService: NgbModal, 
+              private toastr: ToastsManager, 
+              private vcr: ViewContainerRef
+              ) { 
+                this.toastr.setRootViewContainerRef(vcr);
+              }
 
   ngOnInit() {
     this.newBooking = new Booking();
@@ -68,6 +72,7 @@ export class RentalDetailBookingComponent implements OnInit {
     }
   }
 
+  // Để add book days
   private addNewBookedDates(bookingData: any){
     const dateRange = this.helper.getBookingRangeOfDates(bookingData.startAt, bookingData.endAt);
     this.bookedOutDates.push(...dateRange);
