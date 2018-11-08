@@ -9,6 +9,7 @@ import { RentalModule } from './rental/rental.module';
 import { AuthModule } from './auth/auth.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ManageModule } from './manage/manage.module';
 
 const routes : Routes = [
   { path: '', redirectTo: '/rentals', pathMatch: 'full' },
@@ -17,13 +18,14 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RentalModule,
     AuthModule,
+    ManageModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     ToastModule.forRoot()
