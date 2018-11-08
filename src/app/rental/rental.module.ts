@@ -28,8 +28,8 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 const routes : Routes = [
     { path: 'rentals', component: RentalComponent, children: [
         { path: '', component: RentalListComponent },
-        { path: 'new', component: RentalCreateComponent },
-        { path: ':rentalId', component: RentalDetailComponent, canActivate: [AuthGuard] },
+        { path: 'new', component: RentalCreateComponent, canActivate: [AuthGuard] },
+        { path: ':rentalId', component: RentalDetailComponent },
         { path: ':city/homes', component: RentalSearchComponent }
     ]},
   ];

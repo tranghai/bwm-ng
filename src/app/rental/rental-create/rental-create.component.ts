@@ -23,6 +23,10 @@ export class RentalCreateComponent implements OnInit {
     this.newRental.shared = false;
   }
 
+  handleImageChange()  {
+    this.newRental.image = "https://booksync-jerga-prod.s3.amazonaws.com/uploads/rental/image/13/image.jpeg";
+  }
+
   createRental(){
     this.rentalService.createRental(this.newRental).subscribe((rental: Rental) =>{
       this.router.navigate([`/rentals/${rental._id}`]);
