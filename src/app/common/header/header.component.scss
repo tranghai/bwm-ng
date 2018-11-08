@@ -43,11 +43,11 @@
     }
   }
 
-  // .dropdown-item {
-  //   font-size: 14px;
+  .dropdown-item {
+    font-size: 14px;
 
-  //   &:active, &:focus {
-  //     background-color: $main-color;
-  //   }
-  // }
+    &:active, &:focus {
+      background-color: $main-color;
+    }
+  }
 }
