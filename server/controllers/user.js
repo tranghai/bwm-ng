@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const { normalizeErrors } = require('../helpers/mongoose');
 const jwt = require('jsonwebtoken');
-const config = require('../config/dev');
+const config = require('../config');
 
 exports.auth = function (req, res) {
     const { email, password } = req.body;
@@ -23,7 +23,7 @@ exports.auth = function (req, res) {
             const token = jwt.sign({
                 userId: user.id,
                 username: user.username
-            }, 'secret', { expiresIn: '1h' });
+            }, config.SECRET, { expiresIn: '1h' });
 
             return res.json(token);
         } else {
@@ -95,7 +95,7 @@ exports.authMiddleware = function (req, res, next) {
 
 function parseToken(token) {
     var t = token.split(' ')[1];
-    return jwt.verify(token.split(' ')[1], 'secret');
+    return jwt.verify(token.split(' ')[1], config.SECRET);
 }
 
 function notAuthorized(res) {
