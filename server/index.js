@@ -7,7 +7,8 @@ const path = require('path');
 
 const rentalRoutes = require('./routes/rentals'),
     userRoutes = require('./routes/user'),
-    bookingRoutes = require('./routes/bookings');
+    bookingRoutes = require('./routes/bookings'),
+    imageUploadroutes = require('./routes/image-upload');
 
 mongoose.connect(config.DB_URI).then(() => {
     // Config server
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.use('/api/v1/rentals', rentalRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
+app.use('/api/v1', imageUploadroutes);
 
 // Config server
 // Cmd line : npm init

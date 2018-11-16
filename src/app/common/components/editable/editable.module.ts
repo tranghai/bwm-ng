@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ImageUploadModule } from '../image-upload/image-upload.module';
 
 import { EditableInputComponent } from './editable-input/editable-input.component';
 import { EditableTextareaComponent } from './editable-textarea/editable-textarea.component';
@@ -13,6 +14,7 @@ import { EditableImageComponent } from './editable-image/editable-image.componen
     imports: [
         CommonModule,
         FormsModule,
+        ImageUploadModule,
     ],
     exports: [
         EditableInputComponent,

@@ -27,6 +27,7 @@ import { UppercasePipe } from '../common/pipes/uppercase.pipe';
 import { AuthGuard } from '../auth/shared/auth.guard';
 import { EditableModule } from '../common/components/editable/editable.module';
 import { RentalGuard } from './shared/rental.guard';
+import { ImageUploadModule } from '../common/components/image-upload/image-upload.module';
 
 const routes : Routes = [
     { path: 'rentals', component: RentalComponent, children: [
@@ -58,7 +59,8 @@ const routes : Routes = [
         MapModule,
         Daterangepicker,
         FormsModule,
-        EditableModule
+        EditableModule,
+        ImageUploadModule
     ],
     providers: [
         RentalService,
