@@ -49,7 +49,7 @@ const routes : Routes = [
         RentalDetailBookingComponent,
         RentalSearchComponent,
         RentalCreateComponent,
-        RentalUpdateComponent
+        RentalUpdateComponent,
     ],
     imports : [
         RouterModule.forChild(routes), 
