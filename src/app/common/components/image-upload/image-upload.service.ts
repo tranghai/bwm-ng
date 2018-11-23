@@ -10,6 +10,8 @@ export class ImageUploadService{
     }
 
     public uploadImage(image: File): Observable<string | any>{
+
+       
         const formData = new FormData();
 
         formData.append('image', image);

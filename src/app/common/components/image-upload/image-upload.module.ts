@@ -7,9 +7,11 @@ import { ImageUploadComponent } from './image-upload.component';
 
 import { ImageUploadService } from './image-upload.service';
 import { DropZoneDirective } from './drop-zone.directive';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 import { environment } from '../../../../environments/environment';
 
 @NgModule({

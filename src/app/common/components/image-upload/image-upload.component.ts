@@ -3,8 +3,9 @@ import { Component, EventEmitter, OnInit, Output, ViewContainerRef } from '@angu
 import { ToastsManager } from 'ng2-toastr';
 import { ImageUploadService } from './image-upload.service';
 
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -33,9 +34,10 @@ export class ImageUploadComponent implements OnInit {
   imageChangedEvent: any;
 
   constructor(private toastr: ToastsManager, private vcr: ViewContainerRef,
-              private imageService: ImageUploadService,
-              private storage : AngularFireStorage,
-              private db : AngularFirestore) {
+    private imageService: ImageUploadService,
+    private storage: AngularFireStorage,
+    private db: AngularFirestore
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
@@ -60,7 +62,6 @@ export class ImageUploadComponent implements OnInit {
     if (this.selectedFile) {
       return this.selectedFile.file = file;
     }
-
     return this.selectedFile = new FileSnippet('', file);
   }
 
@@ -91,7 +92,7 @@ export class ImageUploadComponent implements OnInit {
         }
       }
 
-      img.src = URL.createObjectURL(file);
+     img.src = URL.createObjectURL(file);
     } else {
       this.toastr.error('Unsupported File Type. Only jpeg and png is allowed!', 'Error!');
     }
@@ -99,14 +100,14 @@ export class ImageUploadComponent implements OnInit {
 
   uploadImage() {
     if (this.selectedFile) {
+      
       const reader = new FileReader();
 
       reader.addEventListener('load', (event: any) => {
-
-        console.log(event.target.result);
         this.selectedFile.src = event.target.result;
 
         this.selectedFile.pending = true;
+
         this.imageService.uploadImage(this.selectedFile.file).subscribe(
           (imageUrl: string) => {
             this.onSuccess(imageUrl);
